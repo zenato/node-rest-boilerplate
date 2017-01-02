@@ -1,4 +1,4 @@
-REST API server on Node technology.
+REST API boilerplate on Node technology.
 
 ## Usage
 - [x] Express
