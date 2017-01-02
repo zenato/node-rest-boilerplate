@@ -1,0 +1,5 @@
+{
+  "testPathDirs": ["__tests__"],
+  "collectCoverage": true,
+  "collectCoverageFrom": ["src/**/*.{js,jsx}"]
+}
