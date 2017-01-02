@@ -1,7 +1,6 @@
-import 'dotenv/config';
-
 import mongoose from 'mongoose';
-import connect from '../../src/models/db';
+import { config } from '../../src/env';
+import connect from '../../src/db';
 import User from '../../src/models/user';
 
 // test user information
@@ -13,6 +12,7 @@ const testUser = {};
 
 describe('User', () => {
   beforeAll((done) => {
+    config();
     connect(process.env.DB_URI);
     mongoose.connection.once('open', () => done());
     mongoose.connection.once('error', err => done.fail(err));
