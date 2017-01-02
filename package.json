@@ -1,5 +1,6 @@
 {
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "gulp",
     "test": "jest --watch --config test-config.json",
