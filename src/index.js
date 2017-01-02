@@ -1,19 +1,18 @@
 import 'source-map-support/register';
-import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import morgan from 'morgan';
 import emoji from 'node-emoji';
 import { green, red } from 'chalk';
-import { isProduction, existsConfig } from './lib/config';
+import { IS_PROD, EXISTS_CONFIG } from './config';
 import routes from './routes';
 import './passport';
 
-if (!existsConfig) {
+if (!EXISTS_CONFIG) {
   console.info(emoji.get('rain_cloud') + red('  Cannot find .env configuration.'));
   console.log();
-  process.exit(1);
+  process.exit(0);
 }
 
 const app = express();
@@ -24,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.disable('x-powered-by');
 
-app.use(morgan(isProduction ? 'dev' : 'combined'));
+app.use(morgan(IS_PROD ? 'dev' : 'combined'));
 app.use(routes);
 
 app.use((req, res) => {
