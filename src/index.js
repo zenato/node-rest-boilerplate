@@ -11,8 +11,7 @@ import configStretegy from './passport';
 import routes from './routes';
 
 // Load config
-const { error } = config(process.env.SKIP_CONFIG);
-if (error) {
+if (!config(process.env.SKIP_CONFIG)) {
   console.info(emoji.get('rain_cloud') + red('  Cannot find .env configuration.'));
   console.log();
   process.exit(0);
