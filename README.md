@@ -39,3 +39,9 @@ Build production app on `build` directory.
 
 Run built app.
 
+
+### Demo
+
+https://node-api-boilerplate.herokuapp.com
+
+Use with REST API client.
