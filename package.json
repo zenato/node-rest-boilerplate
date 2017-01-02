@@ -6,7 +6,7 @@
     "test": "jest --watch --config test-config.json",
     "dist": "gulp dist",
     "start": "NODE_ENV=production node build/index.js",
-    "heroku-postbuild": "gulp dist"
+    "heroku-postbuild": "NODE_ENV=development yarn install && gulp dist"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
