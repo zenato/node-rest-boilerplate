@@ -17,6 +17,19 @@ const paths = {
   destScript: 'build/index.js',
 };
 
+function startNodemon() {
+  const daemon = nodemon({
+    script: paths.destScript,
+    watch: paths.dest,
+    env: { NODE_ENV: 'development' },
+    restartable: 'r',
+    delay: '1000',
+    quiet: true,
+  });
+  process.once('exit', () => daemon.emit('exit'));
+  process.once('SIGINT', () => process.exit(0));
+}
+
 gulp.task('clean', () =>
   del.sync('build')
 );
@@ -44,23 +57,16 @@ gulp.task('build', ['eslint'], () =>
 );
 
 gulp.task('watch', () => {
-  const builtScriptWatcher = watch(paths.destScript, () => {
-    builtScriptWatcher.close();
-    const daemon = nodemon({
-      script: paths.destScript,
-      watch: paths.dest,
-      env: { NODE_ENV: 'development' },
-      restartable: 'r',
-      delay: '1000',
-      quiet: true,
-      runOnChangeOnly: true,
-    });
-    process.once('exit', () => daemon.emit('exit'));
-    process.once('SIGINT', () => process.exit(0));
+  // Watch once for nodemon
+  const destWatcher = watch(paths.destScript, () => {
+    destWatcher.close();
+    startNodemon();
   });
 
+  // Watch source
   watch(paths.srcFiles, () => gulp.start('build'));
 
+  // Go!!
   gulp.start('build');
 });
 
