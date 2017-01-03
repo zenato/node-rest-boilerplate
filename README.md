@@ -17,7 +17,7 @@ REST API boilerplate on Node technology.
 ### Create configuration
 Copy `.env.example` to `.env` and update your configuration.
 
-```js
+```properties
 PORT = 4000
 SECRET = abcd1234
 
@@ -41,6 +41,6 @@ Run built app.
 
 ### Demo
 
-https://node-rest-boilerplate.herokuapp.com
+`https://node-rest-boilerplate.herokuapp.com`
 
 Use with REST API client.
