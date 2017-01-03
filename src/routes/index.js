@@ -6,7 +6,7 @@ import boardRouter from './board';
 const router = express.Router(); // eslint-disable-line new-cap
 
 // Index page
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send('API server is running.');
 });
 
