@@ -5,6 +5,11 @@ import boardRouter from './board';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
+// Index page
+app.get('/', (req, res) => {
+  res.send('API server is running.');
+});
+
 // Requred authenticate
 router.use([
   '/user/me',

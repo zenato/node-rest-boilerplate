@@ -32,11 +32,6 @@ app.use(passport.initialize());
 app.disable('x-powered-by');
 
 app.use(morgan(isProd ? 'combined' : 'dev'));
-
-app.use('/', (req, res) => {
-  res.send('API server is running.');
-});
-
 app.use(routes);
 
 app.use((req, res) => {
