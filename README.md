@@ -42,6 +42,6 @@ Run built app.
 
 ### Demo
 
-https://node-api-boilerplate.herokuapp.com
+https://node-rest-boilerplate.herokuapp.com
 
 Use with REST API client.
