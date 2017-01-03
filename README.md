@@ -15,9 +15,7 @@ REST API boilerplate on Node technology.
 - Prepare for the [mongodb](https://mlab.com).
 
 ### Create configuration
-Copy `.env.example` to `.env`.
-
-- .env
+Copy `.env.example` to `.env` and update your configuration.
 ```
 PORT = 4000
 SECRET = abcd1234
