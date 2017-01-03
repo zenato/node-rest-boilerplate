@@ -16,7 +16,8 @@ REST API boilerplate on Node technology.
 
 ### Create configuration
 Copy `.env.example` to `.env` and update your configuration.
-```
+
+```js
 PORT = 4000
 SECRET = abcd1234
 
