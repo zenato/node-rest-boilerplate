@@ -17,8 +17,8 @@ router.use([
   // TODO: any URL
 ], auth);
 router.put('/board/:id', auth);
+router.delete('/board/:id', auth);
 router.post('/board/save', auth);
-router.delete('/board/remove', auth);
 
 router.use('/user', userRouter);
 router.use('/board', boardRouter);
