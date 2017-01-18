@@ -52,7 +52,7 @@ router.post('/save', async (req, res, next) => {
   }
 });
 
-router.put('/update/:id', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
     const validationErrors = validate(req.body, constraints);
     if (validationErrors) {
@@ -72,7 +72,7 @@ router.put('/update/:id', async (req, res, next) => {
   }
 });
 
-router.delete('/delete/:id', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     const model = await Board.findByIdWithCreator(req.params.id);
     if (!model || !model.isCreator(req.user)) {
