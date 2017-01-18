@@ -35,7 +35,7 @@ async function createCriteria(query) {
 }
 
 BoardSchema.methods.isCreator = function equalCreator(user = {}) {
-  return this._creator._id === user._id;
+  return this._creator._id.equals(user._id);
 };
 
 BoardSchema.statics.list = async function list(query) {
