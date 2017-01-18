@@ -98,7 +98,7 @@ router.get('/me', async (req, res, next) => {
   }
 });
 
-router.put('/update', async (req, res, next) => {
+router.put('/me', async (req, res, next) => {
   try {
     const params = { ...req.body };
     const updateConstraints = {
