@@ -11,12 +11,14 @@ router.get('/', (req, res) => {
 });
 
 // Requred authenticate
+const auth = passport.authenticate('bearer', { session: false });
 router.use([
   '/user/me',
-  '/board/save',
-  '/board/update',
-  '/board/remove',
-], passport.authenticate('bearer', { session: false }));
+  // TODO: any URL
+], auth);
+router.put('/board/:id', auth);
+router.post('/board/save', auth);
+router.delete('/board/remove', auth);
 
 router.use('/user', userRouter);
 router.use('/board', boardRouter);
