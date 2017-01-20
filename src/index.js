@@ -1,5 +1,5 @@
 import 'source-map-support/register';
-import { config } from 'dotenv'
+import { config } from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import passport from 'passport';
