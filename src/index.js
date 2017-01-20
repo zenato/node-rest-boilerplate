@@ -1,18 +1,18 @@
 import 'source-map-support/register';
+import { config } from 'dotenv'
 import express from 'express';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import morgan from 'morgan';
 import emoji from 'node-emoji';
 import { green, red } from 'chalk';
-import { config, isProd } from './env';
 import connect from './db';
 import configStretegy from './passport';
 import cors from './middlewares/cors';
 import routes from './routes';
 
 // Load config
-if (!config(process.env.SKIP_CONFIG)) {
+if (!process.env.SKIP_LOAD_ENV && config().error) {
   console.info(emoji.get('rain_cloud') + red('  Cannot find .env configuration.'));
   console.log();
   process.exit(0);
@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.disable('x-powered-by');
 
 app.use(cors);
-app.use(morgan(isProd ? 'combined' : 'dev'));
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(routes);
 
 app.use((req, res) => {
