@@ -83,9 +83,7 @@ router.post('/join', async (req, res, next) => {
   }
 });
 
-router.get('/me', async (req) => {
-  return req.user;
-});
+router.get('/me', (req, res) => res.json(req.user));
 
 router.put('/me', async (req, res, next) => {
   try {
