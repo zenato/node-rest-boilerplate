@@ -83,19 +83,8 @@ router.post('/join', async (req, res, next) => {
   }
 });
 
-router.get('/me', async (req, res, next) => {
-  try {
-    const model = await User.findByUser(req.user);
-    if (!model) {
-      res.sendStatus(404);
-      return;
-    }
-
-    delete model.password;
-    res.json(model);
-  } catch (e) {
-    next(e);
-  }
+router.get('/me', async (req) => {
+  return req.user;
 });
 
 router.put('/me', async (req, res, next) => {
@@ -117,7 +106,8 @@ router.put('/me', async (req, res, next) => {
       return;
     }
 
-    res.json(await User.updateByUser(req.user, params));
+    await User.updateByUser(req.user, params);
+    res.json(await User.findByUser(req.user));
   } catch (e) {
     next(e);
   }
